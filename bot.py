@@ -4,13 +4,17 @@ from datetime import datetime
 from unshortenit import UnshortenIt
 
 # Option 1: Read HTML from a file
-with open("event_page.html", "r", encoding="utf-8") as file:
-    html_content = file.read()
+#with open("event_page.html", "r", encoding="utf-8") as file:
+    #html_content = file.read()
 
 # Option 2: Use Selenium to fetch the page
-#driver = webdriver.Chrome()
-#driver.get("https://events.venn.buzz/")
-#html_content = driver.page_source
+# Set up the Selenium web driver
+cService = webdriver.ChromeService(executable_path='/home/indra/trash/chromedriver-linux64/chromedriver')
+driver = webdriver.Chrome(service = cService)
+driver.get("https://events.venn.buzz/")
+
+# Get the page source (HTML content)
+html_content = driver.page_source
 
 # Convert the HTML content to a BeautifulSoup object
 soup = BeautifulSoup(html_content, 'html.parser')
