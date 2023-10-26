@@ -2,6 +2,7 @@ from selenium import webdriver
 from bs4 import BeautifulSoup
 from datetime import datetime
 from unshortenit import UnshortenIt
+from selenium import webdriver
 
 # Option 1: Read HTML from a file
 #with open("event_page.html", "r", encoding="utf-8") as file:
@@ -9,8 +10,11 @@ from unshortenit import UnshortenIt
 
 # Option 2: Use Selenium to fetch the page
 # Set up the Selenium web driver
-cService = webdriver.ChromeService(executable_path='/home/indra/trash/chromedriver-linux64/chromedriver')
-driver = webdriver.Chrome(service = cService)
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument("--no-sandbox")
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--disable-gpu")
+driver = webdriver.Chrome(options=chrome_options)
 driver.get("https://events.venn.buzz/")
 
 # Get the page source (HTML content)

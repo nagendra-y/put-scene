@@ -2,8 +2,7 @@ from selenium import webdriver
 import time
 
 # Set up the Selenium web driver
-cService = webdriver.ChromeService(executable_path='/home/indra/trash/chromedriver-linux64/chromedriver')
-driver = webdriver.Chrome(service = cService)
+driver = webdriver.Chrome()
 
 driver.get("https://events.venn.buzz/")
 
